@@ -1,0 +1,15 @@
+{
+  "name": "com.jarzykk.test-core",
+  "version": "1.0.0",
+  "displayName": "Core test",
+  "description": "This is a test package",
+  "unity": "2019.1",
+  "dependencies": {
+  },
+  "author": {
+    "name": "Striped Arts",
+    "email": "unity@example.com",
+    "url": "https://www.unity3d.com"
+  }
+}
+
