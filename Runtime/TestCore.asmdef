@@ -1,7 +1,9 @@
 {
     "name": "TestCore",
     "rootNamespace": "TestCore",
-    "references": [],
+    "references": [
+      "UniTask"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
