@@ -5,7 +5,6 @@ using Cysharp.Threading.Tasks;
 using StripedArts.Unity.Core.Logging.Core;
 using StripedArts.Unity.Core.Logging.Core.Factory;
 using StripedArts.Unity.Core.Logging.Core.Interfaces;
-using UnityEngine;
 using UnityEngine.Networking;
 
 namespace TestCore.Code.Test.Runtime.NetworkService
