@@ -2,7 +2,8 @@
     "name": "TestCore",
     "rootNamespace": "TestCore",
     "references": [
-      "UniTask"
+      "UniTask",
+      "StripedArts.Unity.Core.Logging.Core"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

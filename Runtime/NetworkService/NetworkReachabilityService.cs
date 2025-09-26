@@ -2,16 +2,18 @@ using System;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using StripedArts.Unity.Core.Logging.Core;
+using StripedArts.Unity.Core.Logging.Core.Factory;
+using StripedArts.Unity.Core.Logging.Core.Interfaces;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace TestCore.Code.Test.Runtime.NetworkService
 {
-    /// <summary>
-    /// Provides methods to check network reachability by pinging predefined URLs.
-    /// </summary>
     public static class NetworkReachabilityService
     {
+        private static readonly ILogProvider Logger = LogFactory.Produce(typeof(NetworkReachabilityService), new DChannel("Network"));
+        
         private static readonly string[] TestUrls =
         {
             "https://www.google.com",
@@ -36,18 +38,18 @@ namespace TestCore.Code.Test.Runtime.NetworkService
                 {
                     if (result.Result)
                     {
-                        Debug.Log("Ping successful from URL.");
+                        Logger.LogInfo("Ping successful from URL.");
                         cts.Cancel();
                         return true;
                     }
                 }
                 else if (result.IsFaulted)
                 {
-                    Debug.LogWarning($"Ping failed with exception: {result.Exception}");
+                    Logger.LogWarning($"Ping failed with exception: {result.Exception}");
                 }
             }
         
-            Debug.Log("All ping attempts failed.");
+            Logger.LogInfo("All ping attempts failed.");
             return false;
         }
 
@@ -68,21 +70,21 @@ namespace TestCore.Code.Test.Runtime.NetworkService
 
                 if (request.result == UnityWebRequest.Result.Success)
                 {
-                    Debug.Log($"Ping to {url} success.");
+                    Logger.LogInfo($"Ping to {url} success.");
                     return true;
                 }
 
-                Debug.LogWarning($"Ping to {url} failed. Error: {request.error}");
+                Logger.LogWarning($"Ping to {url} failed. Error: {request.error}");
                 return false;
             }
             catch (OperationCanceledException)
             {
-                Debug.LogWarning($"Ping to {url} was canceled.");
+                Logger.LogWarning($"Ping to {url} was canceled.");
                 return false;
             }
             catch (Exception ex)
             {
-                Debug.LogWarning($"Ping to {url} failed: {ex.Message}");
+                Logger.LogWarning($"Ping to {url} failed: {ex.Message}");
                 return false;
             }
         }
