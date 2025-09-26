@@ -6,21 +6,13 @@ namespace Code.Test.Editor
 {
     public class AssetsInstaller
     {
-        [MenuItem("Tools/Test/Say Hello")]
-        private static void SayHello()
-        {
-            Debug.Log("Hello from a custom menu item!");
-        }
-        
         [MenuItem("Tools/Initialize Core")]
-        private static void InitializeCore()
-        {
+        private static void InitializeCore() => 
             CopyAssetsDirectoryContents();
-        }
-        
+
         private static void CopyAssetsDirectoryContents()
         {
-            string packagePath = "Packages/com.jarzykk.test-core/Runtime/AssetsDirectory";
+            string packagePath = "Packages/com.jarzykk.test-core/Runtime/Internal";
             string destinationPath = "Assets";
             
             if (!Directory.Exists(packagePath))
